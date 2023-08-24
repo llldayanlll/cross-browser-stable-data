@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Info Page</title>
+    <style>
+        /* Your CSS styling here */
+    </style>
+</head>
+<body>
+    <h1>View Info Page</h1>
+    <div id="infoDisplay"></div>
+
+    <script>
+        const infoDisplay = document.getElementById('infoDisplay');
+        const savedInfo = localStorage.getItem('savedInfo');
+
+        if (savedInfo) {
+            const infoArray = savedInfo.split('\n');
+            infoArray.forEach(info => {
+                const infoItem = document.createElement('p');
+                infoItem.textContent = info;
+                infoDisplay.appendChild(infoItem);
+            });
+        } else {
+            const noInfoMessage = document.createElement('p');
+            noInfoMessage.textContent = 'No information saved.';
+            infoDisplay.appendChild(noInfoMessage);
+        }
+    </script>
+</body>
+</html>
